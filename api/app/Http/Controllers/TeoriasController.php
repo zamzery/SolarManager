@@ -1,18 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Alumnos;
+use App\Models\Teorias;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class AlumnosController extends Controller
+class TeoriasController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return Alumnos::all();
+        return Teorias::all();
     }
 
     /**
@@ -22,19 +22,14 @@ class AlumnosController extends Controller
     {
         $id = Auth::id();
         $request->validate([
-            'nombre'=>'required',
-            'email'=>'required',
+            'alumno_id'=>'required',
             'maestro_id'=>'required',
+            'semana'=>'required',
+            'horario_id'=>'required',
             'sucursal_id'=>'required',
-            'celular'=>'required',
-            'direccion'=>'required',
-            'metodopago_id'=>'required',
-            'curso_id'=>'required',
-            'factura'=>'required',
-            'cp'=>'required',
             'user_id'=>$id
         ]);
-        return Alumnos::create($request->all());
+        return Teorias::create($request->all());
     }
 
     /**
@@ -42,7 +37,7 @@ class AlumnosController extends Controller
      */
     public function show(string $id)
     {
-        return Alumnos::find($id);
+        return Teorias::find($id);
     }
 
     /**
@@ -50,9 +45,9 @@ class AlumnosController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $alumnos = Alumnos::find($id);
-        $alumnos->update($request->all());
-        return $alumnos;
+        $teorias = Teorias::find($id);
+        $teorias->update($request->all());
+        return $teorias;
     }
 
     /**
@@ -60,7 +55,7 @@ class AlumnosController extends Controller
      */
     public function destroy(string $id)
     {
-        return Alumnos::destroy($id);
+        return Teorias::destroy($id);
     }
 
     /**
@@ -68,7 +63,7 @@ class AlumnosController extends Controller
      */
     public function search(string $name)
     {
-        return Alumnos::where('name', 'like', '%'.$name.'%')->get();
+        return Teorias::where('name', 'like', '%'.$name.'%')->get();
     }
 
     /**
@@ -76,9 +71,9 @@ class AlumnosController extends Controller
      */
     public function activar(string $id)
     {
-        $alumnos = Alumnos::find($id);
-        $alumnos->update(['activo' => 1]);
-        return $alumnos;
+        $teorias = Teorias::find($id);
+        $teorias->update(['activo' => 1]);
+        return $teorias;
     }
 
     /**
@@ -86,8 +81,8 @@ class AlumnosController extends Controller
      */
     public function desactivar(string $id)
     {
-        $alumnos = Alumnos::find($id);
-        $alumnos->update(['activo' => 0]);
-        return $alumnos;
+        $teorias = Teorias::find($id);
+        $teorias->update(['activo' => 0]);
+        return $teorias;
     }
 }

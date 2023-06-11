@@ -34,7 +34,7 @@ return new class extends Migration
             $table->string('regimen_fiscal')->nullable();
             $table->string('cp')->nullable();
             $table->foreignId('user_id')->references('id')->on('users');
-            $table->boolean('activo')->default(true);
+            $table->boolean('status')->default(1);
         });
     }
 

@@ -20,10 +20,10 @@ return new class extends Migration
             $table->string('password');
             $table->integer('cargo_id');
             $table->boolean('maestro')->default(false);
-            $table->string('celular');
-            $table->text('direccion');
+            $table->string('telefono')->nullable();
+            $table->text('direccion')->nullable();
             $table->string('avatar')->default('default.jpg');
-            $table->boolean('activo');
+            $table->boolean('activo')->default(1);;
             $table->rememberToken();
         });
     }

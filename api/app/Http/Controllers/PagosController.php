@@ -1,18 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Alumnos;
+use App\Models\Pagos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class AlumnosController extends Controller
+class PagosController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return Alumnos::all();
+        return Pagos::all();
     }
 
     /**
@@ -22,19 +22,13 @@ class AlumnosController extends Controller
     {
         $id = Auth::id();
         $request->validate([
-            'nombre'=>'required',
-            'email'=>'required',
-            'maestro_id'=>'required',
-            'sucursal_id'=>'required',
-            'celular'=>'required',
-            'direccion'=>'required',
+            'alumno_id'=>'required',
             'metodopago_id'=>'required',
-            'curso_id'=>'required',
-            'factura'=>'required',
-            'cp'=>'required',
+            'numero_cuenta'=>'required',
+            'pago'=>'required',
             'user_id'=>$id
         ]);
-        return Alumnos::create($request->all());
+        return Pagos::create($request->all());
     }
 
     /**
@@ -42,7 +36,7 @@ class AlumnosController extends Controller
      */
     public function show(string $id)
     {
-        return Alumnos::find($id);
+        return Pagos::find($id);
     }
 
     /**
@@ -50,9 +44,9 @@ class AlumnosController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $alumnos = Alumnos::find($id);
-        $alumnos->update($request->all());
-        return $alumnos;
+        $pagos = Pagos::find($id);
+        $pagos->update($request->all());
+        return $pagos;
     }
 
     /**
@@ -60,7 +54,7 @@ class AlumnosController extends Controller
      */
     public function destroy(string $id)
     {
-        return Alumnos::destroy($id);
+        return Pagos::destroy($id);
     }
 
     /**
@@ -68,7 +62,7 @@ class AlumnosController extends Controller
      */
     public function search(string $name)
     {
-        return Alumnos::where('name', 'like', '%'.$name.'%')->get();
+        return Pagos::where('name', 'like', '%'.$name.'%')->get();
     }
 
     /**
@@ -76,9 +70,9 @@ class AlumnosController extends Controller
      */
     public function activar(string $id)
     {
-        $alumnos = Alumnos::find($id);
-        $alumnos->update(['activo' => 1]);
-        return $alumnos;
+        $pagos = Pagos::find($id);
+        $pagos->update(['activo' => 1]);
+        return $pagos;
     }
 
     /**
@@ -86,8 +80,8 @@ class AlumnosController extends Controller
      */
     public function desactivar(string $id)
     {
-        $alumnos = Alumnos::find($id);
-        $alumnos->update(['activo' => 0]);
-        return $alumnos;
+        $pagos = Pagos::find($id);
+        $pagos->update(['activo' => 0]);
+        return $pagos;
     }
 }

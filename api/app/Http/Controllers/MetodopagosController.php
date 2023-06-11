@@ -1,18 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Alumnos;
+use App\Models\Metodopagos;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class AlumnosController extends Controller
+class MetodopagosController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return Alumnos::all();
+        return Metodopagos::all();
     }
 
     /**
@@ -20,21 +19,11 @@ class AlumnosController extends Controller
      */
     public function store(Request $request)
     {
-        $id = Auth::id();
         $request->validate([
             'nombre'=>'required',
-            'email'=>'required',
-            'maestro_id'=>'required',
-            'sucursal_id'=>'required',
-            'celular'=>'required',
-            'direccion'=>'required',
-            'metodopago_id'=>'required',
-            'curso_id'=>'required',
-            'factura'=>'required',
-            'cp'=>'required',
-            'user_id'=>$id
+            'cuenta'=>'required'
         ]);
-        return Alumnos::create($request->all());
+        return Metodopagos::create($request->all());
     }
 
     /**
@@ -42,7 +31,7 @@ class AlumnosController extends Controller
      */
     public function show(string $id)
     {
-        return Alumnos::find($id);
+        return Metodopagos::find($id);
     }
 
     /**
@@ -50,9 +39,9 @@ class AlumnosController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $alumnos = Alumnos::find($id);
-        $alumnos->update($request->all());
-        return $alumnos;
+        $metodopagos = Metodopagos::find($id);
+        $metodopagos->update($request->all());
+        return $metodopagos;
     }
 
     /**
@@ -60,7 +49,7 @@ class AlumnosController extends Controller
      */
     public function destroy(string $id)
     {
-        return Alumnos::destroy($id);
+        return Metodopagos::destroy($id);
     }
 
     /**
@@ -68,7 +57,7 @@ class AlumnosController extends Controller
      */
     public function search(string $name)
     {
-        return Alumnos::where('name', 'like', '%'.$name.'%')->get();
+        return Metodopagos::where('name', 'like', '%'.$name.'%')->get();
     }
 
     /**
@@ -76,9 +65,9 @@ class AlumnosController extends Controller
      */
     public function activar(string $id)
     {
-        $alumnos = Alumnos::find($id);
-        $alumnos->update(['activo' => 1]);
-        return $alumnos;
+        $metodopagos = Metodopagos::find($id);
+        $metodopagos->update(['activo' => 1]);
+        return $metodopagos;
     }
 
     /**
@@ -86,8 +75,8 @@ class AlumnosController extends Controller
      */
     public function desactivar(string $id)
     {
-        $alumnos = Alumnos::find($id);
-        $alumnos->update(['activo' => 0]);
-        return $alumnos;
+        $metodopagos = Metodopagos::find($id);
+        $metodopagos->update(['activo' => 0]);
+        return $metodopagos;
     }
 }
