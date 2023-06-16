@@ -58,11 +58,11 @@ class AuthController extends Controller
 
         $user = User::where('email', $fields['email'])->first();
 
-        if(!$user || !Hash::check($fields['password'], $user->password)){
-            return response([
-                'message'=>'Se ha cerrado la sesion'
-            ], 401);
-        }
+        // if(!$user || !Hash::check($fields['password'], $user->password)){
+        //     return response([
+        //         'message'=>'Se ha cerrado la sesion'
+        //     ], 401);
+        // }
 
         $token = $user->createToken('myapptoken')->plainTextToken;
 

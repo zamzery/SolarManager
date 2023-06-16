@@ -104,7 +104,6 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::put('/teorias/activar/{id}', [TeoriasController::class, 'activar']);
     Route::put('/teorias/desactivar/{id}', [TeoriasController::class, 'desactivar']);
 
-    Route::post('/users', [AuthController::class, 'register']);
     Route::put('/users', [UserController::class, 'update']);
     Route::delete('/users/{id}', [UserController::class, 'destroy']);
     Route::put('/users/activar/{id}', [UserController::class, 'activar']);
