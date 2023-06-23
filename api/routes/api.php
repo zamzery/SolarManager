@@ -15,6 +15,8 @@ use App\Http\Controllers\PracticasController;
 use App\Http\Controllers\SucursalesController;
 use App\Http\Controllers\TeoriasController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\FacturasController;
+use App\Http\Controllers\ComplementopagosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -113,6 +115,20 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('/users/{id}', [UserController::class, 'show']);
     Route::get('/users/buscar/{name}', [UserController::class, 'search']);
     Route::delete('/users/{id}', [UserController::class, 'destroy']);
+
+    Route::post('/facturas', [FacturasController::class, 'store']);
+    Route::put('/facturas', [FacturasController::class, 'update']);
+    Route::delete('/facturas/{id}', [FacturasController::class, 'destroy']);
+    Route::get('/facturas', [FacturasController::class, 'index']);
+    Route::get('/facturas/{id}', [FacturasController::class, 'show']);
+    Route::get('/facturas/buscar/{name}', [FacturasController::class, 'search']);
+
+    Route::post('/complementopagos', [ComplementopagosController::class, 'store']);
+    Route::put('/complementopagos', [ComplementopagosController::class, 'update']);
+    Route::delete('/complementopagos/{id}', [ComplementopagosController::class, 'destroy']);
+    Route::get('/complementopagos', [ComplementopagosController::class, 'index']);
+    Route::get('/complementopagos/{id}', [ComplementopagosController::class, 'show']);
+    Route::get('/complementopagos/buscar/{name}', [ComplementopagosController::class, 'search']);
 });
 
 /******************
