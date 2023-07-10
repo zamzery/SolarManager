@@ -3,7 +3,7 @@
     * Copyright 2013-2022 Start Bootstrap
     * Licensed under SEE_LICENSE (https://github.com/StartBootstrap/sb-admin-pro/blob/master/LICENSE)
     */
-    window.addEventListener('DOMContentLoaded', event => {
+window.addEventListener('DOMContentLoaded', event => {
     // Activate feather
     feather.replace();
 
@@ -32,10 +32,11 @@
     const sidebarToggle = document.body.querySelector('#sidebarToggle');
     if (sidebarToggle) {
         // Uncomment Below to persist sidebar toggle between refreshes
-        // if (localStorage.getItem('sb|sidebar-toggle') === 'true') {
-        //     document.body.classList.toggle('sidenav-toggled');
-        // }
+        if (localStorage.getItem('sb|sidebar-toggle') === 'true') {
+            document.body.classList.toggle('sidenav-toggled');
+        }
         sidebarToggle.addEventListener('click', event => {
+            console.log("Se dio click")
             event.preventDefault();
             document.body.classList.toggle('sidenav-toggled');
             localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sidenav-toggled'));

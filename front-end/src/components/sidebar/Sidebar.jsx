@@ -1,5 +1,5 @@
 import React from 'react'
-import {PersonAdd, Notifications, Build, Description, RequestQuote, BarChartSharp, Mail, Straighten, Pin, Person, School, Badge, AssignmentInd, AddCard,EventNote, DriveEta, MenuBook, Class, AttachMoney, Paid} from '@mui/icons-material';
+import {PersonAdd, Notifications, Build, Description, RequestQuote, BarChartSharp, Straighten, Pin, Person, School, Badge, AssignmentInd, AddCard,EventNote, DriveEta, MenuBook, Class, AttachMoney, Paid} from '@mui/icons-material';
 
 function Sidebar() {
 	return (
@@ -12,18 +12,12 @@ function Sidebar() {
 					<div className="sidenav-menu-heading d-sm-none">Cuenta</div>
 					{/* Sidenav Link (Alertas)*/}
 					{/* * * Note: * * Visible only on and above the sm breakpoint*/}
-					<a className="nav-link d-sm-none" href="#">
+					<a className="nav-link d-sm-none" href="alertas.html">
 						<div className="nav-link-icon"><Notifications /></div>
 						Alertas
 						<span className="badge bg-warning-soft text-warning ms-auto">4 New!</span>
 					</a>
-					{/* Sidenav Link (Mensajes)*/}
-					{/* * * Note: * * Visible only on and above the sm breakpoint*/}
-					<a className="nav-link d-sm-none" href="#">
-						<div className="nav-link-icon"><Mail /></div>
-						Mensajes
-						<span className="badge bg-success-soft text-success ms-auto">2 New!</span>
-					</a>
+
 					{/* Sidenav Menu Heading (Core)*/}
 					<div className="sidenav-menu-heading">Principal</div>
 					<a className="nav-link" href="charts.html">
@@ -62,13 +56,13 @@ function Sidebar() {
 							<a className="nav-link" href="pricing.html"><div className="nav-link-icon"><Description /></div> Facturas</a>
 							<a className="nav-link" href="invoice.html"><div className="nav-link-icon"><Paid /></div> Complemento Pago</a>
 
-							<a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuthSocial" aria-expanded="false" aria-controls="pagesCollapseAuthSocial">
+							<a className="nav-link collapsed" href={void(0)} data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuthSocial" aria-expanded="false" aria-controls="pagesCollapseAuthSocial">
 								<div className="nav-link-icon"><Build /></div>
 								Administrar Fact.
-								<div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+								<div className="sidenav-collapse-arrow"><i className="fas fa-angle-down"></i></div>
 							</a>
-							<div class="collapse" id="pagesCollapseAuthSocial" data-bs-parent="#accordionSidenavPagesAuth">
-								<nav class="sidenav-menu-nested nav">
+							<div className="collapse" id="pagesCollapseAuthSocial" data-bs-parent="#accordionSidenavPagesAuth">
+								<nav className="sidenav-menu-nested nav">
 									<a className="nav-link" href="pricing.html"><div className="nav-link-icon"><Pin /></div> Claves Facturación</a>
 									<a className="nav-link" href="invoice.html"><div className="nav-link-icon"><Straighten /></div> Unidades Medida</a>
 									<a className="nav-link" href="invoice.html"><div className="nav-link-icon"><AddCard /></div> Metodos Pago</a>
@@ -77,28 +71,35 @@ function Sidebar() {
 						</nav>
 					</div>
 					{/* Sidenav Administrar*/}
-					<div className="sidenav-menu-heading">Administrar</div>
-					{/* Sidenav Accordion (Layout)*/}
-					<a className="nav-link" href="charts.html">
-						<div className="nav-link-icon"><Person /></div>
-						Usuarios
+					<a className="nav-link collapsed" href={void(0)} data-bs-toggle="collapse" data-bs-target="#administrarCollapse" aria-expanded="false" aria-controls="administrarCollapse">
+						<div className="nav-link-icon"><Build /></div>
+						Administrar
+						<div className="sidenav-collapse-arrow"><i className="fas fa-angle-down"></i></div>
 					</a>
-					<a className="nav-link" href="charts.html">
-						<div className="nav-link-icon"><AssignmentInd /></div>
-						Mestros
-					</a>
-					<a className="nav-link" href="charts.html">
-						<div className="nav-link-icon"><Badge /></div>
-						Cargo
-					</a>
-					<a className="nav-link" href="charts.html">
-						<div className="nav-link-icon"><Class /></div>
-						Cursos
-					</a>
-					<a className="nav-link" href="charts.html">
-						<div className="nav-link-icon"><EventNote /></div>
-						Horarios
-					</a>
+					<div className="collapse" id="administrarCollapse" data-bs-parent="#accordionSidenavAdministrar">
+						<nav className="sidenav-menu-nested nav">
+							<a className="nav-link" href="charts.html">
+								<div className="nav-link-icon"><Person /></div>
+								Usuarios
+							</a>
+							<a className="nav-link" href="charts.html">
+								<div className="nav-link-icon"><AssignmentInd /></div>
+								Mestros
+							</a>
+							<a className="nav-link" href="charts.html">
+								<div className="nav-link-icon"><Badge /></div>
+								Cargo
+							</a>
+							<a className="nav-link" href="charts.html">
+								<div className="nav-link-icon"><Class /></div>
+								Cursos
+							</a>
+							<a className="nav-link" href="charts.html">
+								<div className="nav-link-icon"><EventNote /></div>
+								Horarios
+							</a>
+						</nav>
+					</div>
 				</div>
 			</div>
 			{/* Sidenav Footer*/}
