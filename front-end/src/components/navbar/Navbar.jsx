@@ -17,7 +17,7 @@ function Navbar() {
 
 	return (
 		<nav className="topnav navbar navbar-expand shadow justify-content-between justify-content-sm-start navbar-light bg-white" id="sidenavAccordion">
-			<button  onClick={() => { clickMenuOpen() }} className="btn btn-icon btn-transparent-dark order-1 order-lg-0 me-2 ms-lg-2 me-lg-0" id="sidebarToggle">
+			<button onClick={() => { clickMenuOpen() }} className="btn btn-icon btn-transparent-dark order-1 order-lg-0 me-2 ms-lg-2 me-lg-0" id="sidebarToggle">
 				<Menu />
 			</button>
 			<a href="index.html"><img src={logo} className='logo_navbar' alt="Logo Principal" /></a>
@@ -26,14 +26,14 @@ function Navbar() {
 				<ul className='navbar-nav bg-gradient-primary sidebar sidebar-dark accordion'>
 					{/* Alerts Dropdown*/}
 					<li className="nav-item dropdown no-caret d-none d-sm-block me-3 dropdown-notifications">
-					<a className="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownAlerts" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><Notifications /></a>
+					<a className="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownAlerts" href={() => false} role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><Notifications /></a>
 					<div className="dropdown-menu dropdown-menu-end border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownAlerts">
 						<h6 className="dropdown-header dropdown-notifications-header">
 						<i className="me-2" data-feather="bell" />
 						Alertas
 						</h6>
 						{/* Example Alert 1*/}
-						<a className="dropdown-item dropdown-notifications-item" href="#">
+						<a className="dropdown-item dropdown-notifications-item" href={() => false}>
 						<div className="dropdown-notifications-item-icon bg-warning"><MonitorHeart /></div>
 						<div className="dropdown-notifications-item-content">
 							<div className="dropdown-notifications-item-content-details">December 29, 2021</div>
@@ -41,7 +41,7 @@ function Navbar() {
 						</div>
 						</a>
 						{/* Example Alert 2*/}
-						<a className="dropdown-item dropdown-notifications-item" href="#">
+						<a className="dropdown-item dropdown-notifications-item" href={() => false}>
 						<div className="dropdown-notifications-item-icon bg-info"><BarChart /></div>
 						<div className="dropdown-notifications-item-content">
 							<div className="dropdown-notifications-item-content-details">December 22, 2021</div>
@@ -49,19 +49,19 @@ function Navbar() {
 						</div>
 						</a>
 						{/* Example Alert 3*/}
-						<a className="dropdown-item dropdown-notifications-item" href="#">
+						<a className="dropdown-item dropdown-notifications-item" href={() => false}>
 						<div className="dropdown-notifications-item-icon bg-danger"><Warning /></div>
 						<div className="dropdown-notifications-item-content">
 							<div className="dropdown-notifications-item-content-details">December 8, 2021</div>
 							<div className="dropdown-notifications-item-content-text">Critical system failure, systems shutting down.</div>
 						</div>
 						</a>
-						<a className="dropdown-item dropdown-notifications-footer" href="#">Ver todas las alertas</a>
+						<a className="dropdown-item dropdown-notifications-footer" href={() => false}>Ver todas las alertas</a>
 					</div>
 					</li>
 					{/* User Dropdown*/}
 					<li className="nav-item dropdown no-caret dropdown-user me-3 me-lg-4">
-						<button type="button" className="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img className="img-fluid" src="assets/img/illustrations/profiles/profile-1.png" alt=""/></button>
+						<button type="button" className="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img className="img-fluid" src="assets/img/illustrations/profiles/profile-1.png" alt=""/></button>
 						<div className="dropdown-menu dropdown-menu-end border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownUserImage">
 							<h6 className="dropdown-header d-flex align-items-center">
 								<img className="dropdown-user-img" src="assets/img/illustrations/profiles/profile-1.png" alt=""/>
@@ -71,11 +71,11 @@ function Navbar() {
 								</div>
 							</h6>
 							<div className="dropdown-divider" />
-								<a className="dropdown-item" href="#">
+								<a className="dropdown-item" href={() => false}>
 									<div className="dropdown-item-icon"><i data-feather="settings" /></div>
 									<AccountCircle color="primary" /> <span style={{color: '#1565C0'}}> Configurar Cuenta</span>
 								</a>
-								<a className="dropdown-item" href="#">
+								<a className="dropdown-item" href={() => false}>
 								<div className="dropdown-item-icon"><i data-feather="log-out" /></div>
 								<Logout sx={{ color: red[500] }} /> <span style={{color: 'red'}}>Cerrar Sesión </span> 
 							</a>

@@ -1,25 +1,11 @@
 import './Dashboard.css'
-import {BarChartSharp} from '@mui/icons-material';
+import Header from '../../components/header/Header';
 
-function Dashboard() {
+function Dashboard(props) {
 	return (
 		<div id="layoutSidenav_content">
 			<main>
-			<header className="page-header page-header-dark pb-10 bg-img-repeat overlay-warning overlay-50 bg-warning">
-				<div className="container-xl px-4">
-				<div className="page-header-content pt-4">
-					<div className="row align-items-center justify-content-between">
-					<div className="col-auto mt-4">
-						<h1 className="page-header-title text-white">
-							<div className="page-header-icon text-white"><BarChartSharp /></div>
-							Escritorio
-						</h1>
-						<div className="text-white">Sistema de Administración Escuela de Manejo del Sol</div>
-					</div>
-					</div>
-				</div>
-				</div>
-			</header>
+			<Header header={props.header} descripcion={props.descripcion} />
 			{/* Main page content*/}
 			<div className="container-xl px-4 mt-n10">
 				<div className="row">
