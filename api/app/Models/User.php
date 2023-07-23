@@ -25,6 +25,9 @@ class User extends Authenticatable
         'maestro',
         'celular',
         'direccion',
+        'color,'
+        'textColor,'
+        'redireccion',
         'avatar',
         'activo',
     ];

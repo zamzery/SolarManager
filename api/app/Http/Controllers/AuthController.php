@@ -58,19 +58,25 @@ class AuthController extends Controller
 
         $user = User::where('email', $fields['email'])->first();
 
-        // if(!$user || !Hash::check($fields['password'], $user->password)){
-        //     return response([
-        //         'message'=>'Se ha cerrado la sesion'
-        //     ], 401);
-        // }
-
-        $token = $user->createToken('myapptoken')->plainTextToken;
-
-        $response=[
-            'user'=>$user,
-            'token'=>$token
-        ];
-
-        return response($response, 201);
+        if( isset($user->email) ){
+            if( Hash::check($fields['password'], $user->password) ){
+                $token = $user->createToken('auth_token')->plainTextToken;
+                $response=[
+                    'user'=>$user,
+                    'access_token'=>$token,
+                    'redireccion'=>$user->redireccion,
+                    'estatus'=>'ok'
+                ];
+                return response($response, 201);
+            } else {
+                return response([
+                    'message'=>'El usuario o la contraseña son incorrectos.'
+                ], 401);
+            }
+        } else {
+            return response([
+                'message'=>'El usuario o la contraseña son incorrectos.'
+            ], 401);
+        }
     }
 }

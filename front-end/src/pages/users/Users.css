@@ -1,0 +1,12 @@
+.react-colorful{
+	margin-left: -145px!important;
+}
+.colorful{
+	padding: 1px 12px;
+}
+
+@media screen and (max-width: 768px) {
+	.react-colorful{
+		margin-left: 0px!important;
+	}
+}

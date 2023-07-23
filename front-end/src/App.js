@@ -1,5 +1,4 @@
-import Navbar from "./components/navbar/Navbar";
-import Sidebar from "./components/sidebar/Sidebar";
+import React from "react";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Clases from "./pages/clases/Clases";
 import Practicas from "./pages/practicas/Practicas";
@@ -16,6 +15,7 @@ import Maestros from "./pages/maestros/Maestros";
 import Cargousuarios from "./pages/cargousuarios/Cargousuarios";
 import Cursos from "./pages/cursos/Cursos";
 import Horarios from "./pages/horarios/Horarios";
+import Auth from "./auth/Auth";
 
 import {
   BrowserRouter,
@@ -25,12 +25,11 @@ import {
 
 function App() {
   return (
-    <BrowserRouter>
-      <Navbar />
-      <div id="layoutSidenav">
-        <Sidebar />
+    <React.Fragment>
+      <BrowserRouter>
         <Routes>
-          <Route path="/" element={
+          <Route path="/" exact element={ <Auth />} />
+          <Route path="escritorio/" element={
             <Dashboard 
               header={'Escritorio'}
               descripcion={'Sistema de Administración Escuela de Manejo del Sol'}
@@ -126,9 +125,12 @@ function App() {
               descripcion={'Administración de horarios'}
             />
           } />
+          <Route path="login/*" element={
+            <Auth />
+          } />
         </Routes>
-      </div>
-    </BrowserRouter>
+      </BrowserRouter>
+    </React.Fragment>
   );
 }
 

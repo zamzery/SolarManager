@@ -5678,6 +5678,8 @@ textarea.form-control-lg {
   padding: 0.5rem 1rem;
   color: #0061f2;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+  outline: none !important;
+  box-shadow: none !important;
 }
 @media (prefers-reduced-motion: reduce) {
   .nav-link {
@@ -21043,4 +21045,27 @@ pre[class*=language-] {
 
 .token.variable {
   color: #ff6666;
+}
+
+.body-animation {
+  background: linear-gradient(-45deg, #b45b1f, #d49c21);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	height: 100vh;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.display-none {
+  display: none !important;
 }

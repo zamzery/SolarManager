@@ -22,6 +22,9 @@ return new class extends Migration
             $table->boolean('maestro')->default(false);
             $table->string('telefono')->nullable();
             $table->text('direccion')->nullable();
+            $table->string('color')->default('#000000');
+            $table->string('textColor')->default('#FFFFFF');
+            $table->string('redireccion')->default('escritorio');
             $table->string('avatar')->default('default.jpg');
             $table->boolean('activo')->default(1);;
             $table->rememberToken();
