@@ -23,10 +23,10 @@ class User extends Authenticatable
         'password',
         'cargo_id',
         'maestro',
-        'celular',
+        'telefono',
         'direccion',
-        'color,'
-        'colorText,'
+        'color',
+        'colorText',
         'redireccion',
         'avatar',
         'activo',
