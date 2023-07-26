@@ -8,6 +8,7 @@ import { HexColorPicker } from "react-colorful";
 
 import axios from 'axios';
 import { ApiURL } from '../../services/ApiURL';
+import { TableAxios } from '../../components/tableAxios/TableAxios';
 
 function Users(props) {
 	const [state, setState] = useState({
@@ -17,13 +18,26 @@ function Users(props) {
 	});
 	const [color, setColor] = useState("#000000");
 	const [data,setData] = useState([])
+	const [filas,setFilas] = useState([])
 	useEffect(()=>{
-		axios.get(ApiURL + '/api/cargos' ).then(response => {
+		axios.get(ApiURL + 'cargos' ).then(response => {
 			setData(response.data)
 		}).catch(error => {
 			console.log(error)
 		});
+		getDataTable()
 	},[])
+
+	const getDataTable = async () => {
+		await http.get(ApiURL+'users').then((response) => {
+				const data = response.data;
+				console.log(data)
+				setFilas(data);
+			}).catch((error) => {
+				console.log(error);
+			}
+		);
+	}
 
 	const { register, handleSubmit, formState: { errors } } = useForm();
 	const http = axios.create({
@@ -74,6 +88,21 @@ function Users(props) {
 		handleForm(data)
 	}
 
+	const columns = [
+		{
+			name: "id",
+			label: "ID",
+		},
+		{
+			name: "nombre",
+			label: "NOMBRE",
+		},
+		{
+			name: "category",
+			label: "CATEGORY",
+		},
+	];
+
 	return (
 		<div>
 			<Navbar />
@@ -81,11 +110,12 @@ function Users(props) {
 				<Sidebar />
 				<div id="layoutSidenav_content">
 					<main>
-						<Header header={props.header} descripcion={props.descripcion} />
+						<Header header={props.header} descripcion={props.descripcion} agregar={1} />
 						<div className="container-xl px-4 mt-n10">
 							<div className="col-xl-12">
 								<div className="card mb-4">
 									<div className="card-body">
+										<TableAxios columnas={columns} datos={filas} />
 									</div>
 								</div>
 							</div>

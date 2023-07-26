@@ -2,7 +2,7 @@ import './Maestros.css'
 import React, { useState }  from 'react'
 import Header from '../../components/header/Header'
 import axios from 'axios';
-import { ApiURL, ApiUser } from '../../services/ApiURL';
+import { ApiURL } from '../../services/ApiURL';
 import Navbar from "../../components/navbar/Navbar";
 import Sidebar from "../../components/sidebar/Sidebar";
 import { useForm } from "react-hook-form";
@@ -68,7 +68,7 @@ function Maestros(props) {
 	}
 
 	async function handleForm(data){
-		console.log(ApiUser,data,http)
+		console.log(data,http)
 		// http.post(ApiUser, {
 		// 	email: email,
 		// 	password: password

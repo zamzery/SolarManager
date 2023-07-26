@@ -1,51 +1,50 @@
-import { useState, useEffect } from "react";
 import MUIDataTable from "mui-datatables";
-import axios from 'axios';
 
 export const TableAxios = (props) => {
-	//Configuración de los hooks
-	const [datos, setDatos] = useState([]);
-
-	//Acción para mostarr los datos con axios
-	const baseURL = 'https://fakestoreapi.com/products';
-
-	const getData = async () => {
-		await axios.get(baseURL).then((response) => {
-				const data = response.data;
-				console.log(data)
-				setDatos(data);
-			}).catch((error) => {
-				console.log(error);
-			}
-		);
+	const options = {
+		// filterType: 'checkbox',
+		textLabels: {
+			body: {
+				noMatch: "No hay datos que mostrar",
+				toolTip: "Ordenar",
+				columnHeaderTooltip: column => `Ordenar por ${column.label}`
+			},
+			pagination: {
+				next: "Siguiente",
+				previous: "Anterior",
+				rowsPerPage: "No. Filas:",
+				displayRows: "de",
+			},
+			toolbar: {
+				search: "Buscar",
+				downloadCsv: "Descargar CSV",
+				print: "Imprimir",
+				viewColumns: "Ver Columnas",
+				filterTable: "Filtrar Tabla",
+			},
+			filter: {
+				all: "Todos",
+				title: "FILTROS",
+				reset: "LIMPIAR",
+			},
+			viewColumns: {
+				title: "Ver Columnas",
+				titleAria: "Ver/Ocultar Columnas",
+			},
+			selectedRows: {
+				text: "fila(s) seleccionada(s)",
+				delete: "Borrar",
+				deleteAria: "Borrar Filas Seleccionadas",
+			},
+		}
 	}
-
-	useEffect(() => {
-		getData();
-	}, []);
-
-	//Definición de las columnas
-	const columns = [
-		{
-			name: "id",
-			label: "ID",
-		},
-		{
-			name: "title",
-			label: "TITLE",
-		},
-		{
-			name: "category",
-			label: "CATEGORY",
-		},
-	];
 
 	//Renderizado del datatable
 	return (
 		<MUIDataTable
-			title={"Employee List"}
-			data={datos}
-			columns={columns}
+			data={props.datos}
+			columns={props.columnas}
+			options={options}
 		/>	
 	)
 }

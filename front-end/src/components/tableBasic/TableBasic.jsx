@@ -1,13 +1,6 @@
 import React from 'react'
 import './TableBasic.css'
 import MUIDataTable from 'mui-datatables';
-import { createTheme, ThemeProvider } from '@mui/material';
-
-const darkTheme = createTheme({
-	palette: {
-		mode: 'dark',
-	},
-});
 
 export class TableBasic extends React.Component {
 	render () {
@@ -24,7 +17,7 @@ export class TableBasic extends React.Component {
 			["James Houston", "Test Corp", "Dallas", "TX"],
 		]
 		const options = {
-			filterType: 'checkbox',
+			// filterType: 'checkbox',
 			textLabels: {
 				body: {
 					noMatch: "No hay datos que mostrar",
@@ -62,14 +55,12 @@ export class TableBasic extends React.Component {
 		}
 
 		return(
-			<ThemeProvider theme={darkTheme}>
-				<MUIDataTable
-					title={"Employee List"}
-					data={data}
-					columns={columns}
-					options={options}
-				/>
-			</ThemeProvider>
+			<MUIDataTable
+				title={"Employee List"}
+				data={data}
+				columns={columns}
+				options={options}
+			/>
 		)
 	}
 

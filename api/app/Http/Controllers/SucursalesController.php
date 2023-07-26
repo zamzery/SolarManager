@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Sucursales;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SucursalesController extends Controller
 {

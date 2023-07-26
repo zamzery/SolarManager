@@ -26,7 +26,7 @@ class User extends Authenticatable
         'celular',
         'direccion',
         'color,'
-        'textColor,'
+        'colorText,'
         'redireccion',
         'avatar',
         'activo',

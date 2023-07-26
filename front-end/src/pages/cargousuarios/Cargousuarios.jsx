@@ -2,7 +2,7 @@ import React, { useState }  from 'react'
 import './Cargousuarios.css'
 import Header from '../../components/header/Header'
 import axios from 'axios';
-import { ApiURL, ApiUser } from '../../services/ApiURL';
+import { ApiURL } from '../../services/ApiURL';
 import Navbar from "../../components/navbar/Navbar";
 import Sidebar from "../../components/sidebar/Sidebar";
 import { useForm } from "react-hook-form";
@@ -27,26 +27,26 @@ function Cargousuarios(props) {
 		withCredentials: true
 	});
 
-	async function getUser(email,password){
-		http.post(ApiUser, {
-			email: email,
-			password: password
-		}).then(response => {
-			document.body.classList.remove('body-animation');
-			if(response.data.estatus === 'ok'){
-				localStorage.setItem('token', response.data.access_token);
-				// navigate(response.data.redireccion); //navigate('escritorio');
-			} else {
-				setState({ problema: true, message: response.data.message });
-			}
-			setState({ problema: false, message: '' });
-		}).catch(error => {
-			setState({ problema: true, message: error.response.data.message });
-		});
-	}
+	// async function getUser(email,password){
+	// 	http.post(ApiUser, {
+	// 		email: email,
+	// 		password: password
+	// 	}).then(response => {
+	// 		document.body.classList.remove('body-animation');
+	// 		if(response.data.estatus === 'ok'){
+	// 			localStorage.setItem('token', response.data.access_token);
+	// 			// navigate(response.data.redireccion); //navigate('escritorio');
+	// 		} else {
+	// 			setState({ problema: true, message: response.data.message });
+	// 		}
+	// 		setState({ problema: false, message: '' });
+	// 	}).catch(error => {
+	// 		setState({ problema: true, message: error.response.data.message });
+	// 	});
+	// }
 
 	const onSubmit = (data) => {
-		getUser(data.email,data.password)
+		// getUser(data.email,data.password)
 	}
 
 	return (

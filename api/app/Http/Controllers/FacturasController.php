@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Facturas;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FacturasController extends Controller
 {
@@ -32,7 +33,7 @@ class FacturasController extends Controller
             'subtotal'=>'required',
             'descuento'=>'required',
             'iva'=>'required',
-            'total'=>'required'
+            'total'=>'required',
             'user_id'=>$id
         ]);
         return Facturas::create($request->all());

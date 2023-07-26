@@ -27,7 +27,7 @@ class CursosController extends Controller
             'semana'=>'required',
             'horario_id'=>'required',
             'sucursal_id'=>'required',
-            'user_id'=>$id
+            'user_id'=>$id,
             'comentarios'=>'required',
         ]);
         return Cursos::create($request->all());

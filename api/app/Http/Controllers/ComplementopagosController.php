@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Complementopagos;
 use Illuminate\Http\Request;
 
 class ComplementopagosController extends Controller
@@ -29,7 +29,7 @@ class ComplementopagosController extends Controller
             'formadePago'=>'required',
             'fechaPago'=>'required',
             'usoCfdi'=>'required',
-            'comentarioAdicional'=>'required'
+            'comentarioAdicional'=>'required',
             'status'=>'required'
         ]);
         return Complementopagos::create($request->all());

@@ -6,17 +6,21 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AlumnosController;
 use App\Http\Controllers\CargosController;
 use App\Http\Controllers\ClasesController;
+use App\Http\Controllers\ComplementopagosController;
 use App\Http\Controllers\CursosController;
+use App\Http\Controllers\DetallecomplementosController;
+use App\Http\Controllers\DetallefacturasController;
+use App\Http\Controllers\FacturasController;
 use App\Http\Controllers\HorariosController;
 use App\Http\Controllers\MaestrosController;
 use App\Http\Controllers\MetodopagosController;
 use App\Http\Controllers\PagosController;
+use App\Http\Controllers\PermisosController;
 use App\Http\Controllers\PracticasController;
 use App\Http\Controllers\SucursalesController;
 use App\Http\Controllers\TeoriasController;
+use App\Http\Controllers\UnidadesmedidaController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\FacturasController;
-use App\Http\Controllers\ComplementopagosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,11 +32,6 @@ use App\Http\Controllers\ComplementopagosController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-
-
-Route::post('/clases', function(){
-    return 'clases';
-});
 
 /********************
  * RUTAS PROTEGIDAS *
@@ -106,15 +105,16 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::put('/teorias/activar/{id}', [TeoriasController::class, 'activar']);
     Route::put('/teorias/desactivar/{id}', [TeoriasController::class, 'desactivar']);
 
+    Route::post('/unidadesmedida', [UnidadesmedidaController::class, 'store']);
+    Route::put('/unidadesmedida', [UnidadesmedidaController::class, 'update']);
+    Route::delete('/unidadesmedida/{id}', [UnidadesmedidaController::class, 'destroy']);
+    Route::put('/unidadesmedida/activar/{id}', [UnidadesmedidaController::class, 'activar']);
+    Route::put('/unidadesmedida/desactivar/{id}', [UnidadesmedidaController::class, 'desactivar']);
+
     Route::put('/users', [UserController::class, 'update']);
     Route::delete('/users/{id}', [UserController::class, 'destroy']);
     Route::put('/users/activar/{id}', [UserController::class, 'activar']);
     Route::put('/users/desactivar/{id}', [UserController::class, 'desactivar']);
-
-    Route::get('/users', [UserController::class, 'index']);
-    Route::get('/users/{id}', [UserController::class, 'show']);
-    Route::get('/users/buscar/{name}', [UserController::class, 'search']);
-    Route::delete('/users/{id}', [UserController::class, 'destroy']);
 
     Route::post('/facturas', [FacturasController::class, 'store']);
     Route::put('/facturas', [FacturasController::class, 'update']);
@@ -136,6 +136,10 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
  ******************/
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
+
+Route::get('/users', [UserController::class, 'index']);
+Route::get('/users/{id}', [UserController::class, 'show']);
+Route::get('/users/buscar/{name}', [UserController::class, 'search']);
 
 Route::get('/alumnos', [AlumnosController::class, 'index']);
 Route::get('/alumnos/{id}', [AlumnosController::class, 'show']);
@@ -180,6 +184,14 @@ Route::get('/sucursales/buscar/{name}', [SucursalesController::class, 'search'])
 Route::get('/teorias', [TeoriasController::class, 'index']);
 Route::get('/teorias/{id}', [TeoriasController::class, 'show']);
 Route::get('/teorias/buscar/{name}', [TeoriasController::class, 'search']);
+
+Route::get('/unidadesmedida', [UnidadesmedidaController::class, 'index']);
+Route::get('/unidadesmedida/{id}', [UnidadesmedidaController::class, 'show']);
+Route::get('/unidadesmedida/buscar/{name}', [UnidadesmedidaController::class, 'search']);
+
+Route::get('/complementopagos', [ComplementopagosController::class, 'index']);
+Route::get('/complementopagos/{id}', [ComplementopagosController::class, 'show']);
+Route::get('/complementopagos/buscar/{name}', [ComplementopagosController::class, 'search']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

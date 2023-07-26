@@ -3,7 +3,7 @@ import axios from 'axios'
 import './Auth.css'
 import { useForm } from "react-hook-form";
 import logo from './ManejoDelSol_LogoHeader.jpg'
-import { ApiURL, ApiUser } from '../services/ApiURL';
+import { ApiURL } from '../services/ApiURL';
 import {useNavigate} from 'react-router-dom';
 
 function Auth() {
@@ -17,22 +17,24 @@ function Auth() {
 		problema: false,
 		message: ''
 	});
-
 	const { register, handleSubmit, formState: { errors } } = useForm();
+
 	const http = axios.create({
 		baseURL: ApiURL,
 		headers: {
 			'X-Requested-With': 'XMLHttpRequest',
 			'Content-Type': 'application/json',
+			'Accept': 'application/json',
 		},
 		withCredentials: true
 	});
 
 	async function getUser(email,password){
-		http.post(ApiUser, {
+		http.post('/api/login', {
 			email: email,
 			password: password
 		}).then(response => {
+			console.log(response)
 			document.body.classList.remove('body-animation');
 			if(response.data.estatus === 'ok'){
 				localStorage.setItem('token', response.data.access_token);
@@ -42,6 +44,7 @@ function Auth() {
 			}
 			setState({ problema: false, message: '' });
 		}).catch(error => {
+			console.log(error)
 			setState({ problema: true, message: error.response.data.message });
 		});
 	}

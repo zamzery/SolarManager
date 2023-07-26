@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Metodopagos;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MetodopagosController extends Controller
 {

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Detallecomplementos;
 use Illuminate\Http\Request;
 
 class DetallecomplementosController extends Controller

@@ -1,6 +1,7 @@
 import React from 'react';
 import './Header.css';
-import {PersonAdd, Description, Timeline, Straighten, Pin, Person, School, Badge, AssignmentInd, AddCard,EventNote, DriveEta, MenuBook, Class, AttachMoney, Paid} from '@mui/icons-material';
+import {PersonAdd, Description, Timeline, Straighten, Pin, Person, School, Badge, AssignmentInd, AddCard,EventNote, DriveEta, MenuBook, Class, AttachMoney, Paid, Add
+} from '@mui/icons-material';
 
 function Header(props) {
 	function getIconFromName (header) {
@@ -32,7 +33,7 @@ function Header(props) {
 						<div className="col-auto mt-4">
 							<h1 className="page-header-title text-white">
 								<div className="page-header-icon text-white">{getIconFromName(props.header)}</div>
-								{props.header}
+								{props.header} {props.agregar===1 && <button id="btnAgregar" className="btn btn-sm btn-success agregar"> <Add /> Agregar</button>}
 							</h1>
 							<div className="text-white">{props.descripcion}</div>
 						</div>
